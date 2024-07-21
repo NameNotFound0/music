@@ -25,6 +25,8 @@ const artistSchema = mongoose.Schema({
 		}],
 		description: String
 	}]
+},
+	{versionKey: false //don't add version key to document
 })
 
 const Artist = mongoose.model('Artist',artistSchema);

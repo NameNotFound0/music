@@ -7,13 +7,19 @@ const cors = require('cors') //getting cors middleware for connections
 
 const app = express() //Using app with express
 
-app.use(cors())
+//Variables for .env
+const PORT = process.env.PORT || 3000
+const MONGO_ADD = process.env.MONGO_ADD
+const FRONTEND = process.env.FRONTEND
+
+var corsOptions = {
+	origin: FRONTEND,
+	optionSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 app.use(express.json()) //for manipulation info with json
 app.use(express.urlencoded({extended: false}))
-
-//Variables for .env
-const PORT = process.env.PORT || 5000
-const MONGO_ADD = process.env.MONGO_ADD
 
 //Routes
 app.use('/api/artists', artistRoute);
